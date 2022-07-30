@@ -1,0 +1,112 @@
+// mixins utilisable
+
+//screen size
+
+    //+/- plus ou moins le query
+
+    //'sm' : 640px => portable
+    //'md' : 768px => tablette
+    //'lg' : 1024px => ordinateur
+    //'xl' : 1280px => grand écran
+
+@mixin screen($screen : '+lg')
+    @if ($screen == '-sm') // inferieur au portable
+        @media (max-width: 640px)
+            @content
+    @if ($screen == '+sm') // superieur au portable
+        @media (min-width: 640px)
+            @content
+
+    @if ($screen == '-md') // inferieur à la tablette
+        @media (max-width: 640px)
+            @content
+    @if ($screen == '+md') // superieur à la tablette
+        @media (min-width: 640px)
+            @content
+
+    @if ($screen == '-lg') // inferieur à l'ordinateur
+        @media (max-width: 1024px)
+            @content
+    @if ($screen == '+lg') // supérieur à l'ordinateur
+        @media (min-width: 1023px)
+            @content
+
+    @if ($screen == '-xl') //inferieur au grand écran
+        @media (max-width: 1280px)
+            @content
+    @if ($screen == '+xl') //superieur au grand écran
+        @media (min-width: 1280px)
+            @content
+
+//orientation de l'écran
+    //lanscrape : paysage
+    //portrait : portrait.
+
+@mixin orientation($screen : 'landscape')
+    @if ($screen == 'landscape')
+        @media (orientation: landscape)
+            @content
+    @if ($screen == 'portrait')
+        @media (orientation: portrait)
+            @content
+    
+//flexbox
+
+//'center' => centre l'item
+//'top' => met en haut l'item
+//'bottom' => met en bas l'item
+//'left' => met à gauche l'item
+//'right' => met à droite l'item
+
+@mixin flex($pos : 'center')
+    display: flex
+    @if ($pos == 'center')
+        justify-content: center
+        align-content: center
+        
+    @if ($pos == 'top')
+        justify-content: center
+        align-content: flex-start
+        
+    @if ($pos == 'bottom')
+        justify-content: center
+        align-content: end
+        
+    @if ($pos == 'left')
+        justify-content: start
+        align-content: center
+        
+    @if ($pos == 'right')
+        justify-content: end
+        align-content: center
+    
+
+//margin
+
+@mixin my($size: 1) //vertical
+    margin-top: $size*0.25rem
+    margin-bottom: $size*0.25rem
+
+@mixin mx($size: 1) //horizontal
+    margin-left: $size*0.25rem
+    margin-right: $size*0.25rem
+
+//padding
+
+@mixin py($size: 1) //vertical
+    padding-top: $size*0.25rem
+    padding-bottom: $size*0.25rem
+
+@mixin px($size: 1) //horizontal
+    padding-left: $size*0.25rem
+    padding-right: $size*0.25rem
+
+//color
+
+@mixin dark
+    html.dark & //si la class dark est sur la balise html, cela met le theme dark
+        @content
+
+@mixin light
+    html.light & //si la class dark est sur la balise html, cela met le theme dark
+        @content

@@ -1,0 +1,43 @@
+// palette de couleurs
+
+//primaire
+$primary:           lighten(#940503, 15%)
+$primary--2:        #FF918F
+
+//secondaire
+$dark-secondary:    #A3AEFF
+
+$light-secondary:   #0014A8
+
+//popup
+$dark-error:        #FF1A1A
+$dark-info:         #1AD9FF
+$dark-success:       #1AFF1A
+$dark-warning:      #FFFF1A
+
+$light-error:       #E50000
+$light-info:        #00BFE5
+$light-success:      #00E500
+$light-warning:     #E5E500
+
+//background
+$dark-bg :          #21232C
+
+$light-bg :         #DBE2FF
+
+//text
+$dark-text:         #FFEEDB
+$dark-text--2:     darken($dark-text, 20%)
+
+$light-text:        #332A30
+$light-text--2:     lighten($light-text, 10%)
+
+//map by theme
+
+$MapPrimary: ("1": $primary, "2": $primary--2,) //c'est la même couleur primaire
+
+$light: (secondary: $light-secondary, "popup" : ("error" : $light-error, "info": $light-info, "success": $light-success, "warning": $light-warning),"text" : ("1": $light-text, "2": $light-text--2))
+$allLight: map.merge($light, ("primary": $MapPrimary))
+
+$dark: ("secondary":$dark-secondary, "popup" : ("error" : $dark-error, "info": $dark-info, "success": $dark-success, "warning": $dark-warning), "text" : ("1": $dark-text, "2": $dark-text--2))  //c'étaiiit long de tout faire T-T
+$allDark: map.merge($light, ("primary": $MapPrimary))

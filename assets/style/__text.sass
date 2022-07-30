@@ -1,0 +1,16 @@
+@import url('https://rsms.me/inter/inter.css')
+    
+body
+    font-family: 'Inter', sans-serif
+    @include light
+        background: $light-bg
+        color: $light-text
+    @include dark
+        background: $dark-bg
+        color: $dark-text
+
+a
+    &:hover
+        color: $primary
+
+    
