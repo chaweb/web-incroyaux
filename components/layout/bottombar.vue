@@ -7,7 +7,7 @@
     
     .btmbar__col
         h2.btmbar__title telechargement
-        a(href="").btmbar__elem minecraft launcher
+        a(href="/luncher.exe" download="incroyaux-luncher.exe").btmbar__elem minecraft launcher
 </template>
 
 <style lang="sass" scoped>
@@ -20,6 +20,8 @@
 
     display: flex
     flex-direction: row
+    flex-wrap: wrap
+    gap: 3rem
 
     width: 100vw
     

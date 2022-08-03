@@ -4,6 +4,7 @@
     h1(v-if="error.statusCode === 404") La page n'a pas été trouver
     h1(v-else) erreur récurante (si cela se produit regulièrement, contacter un membre du staff sur le 
         a(href="https://discord.gg/ZVQnJtYteq") discord
+        |)
     nuxtLink(to="/").list__item
                 fa(icon="fa-solid fa-home")
                 | menu

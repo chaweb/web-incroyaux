@@ -1,0 +1,10 @@
+//change name of this file by client.json and delete this commentaire
+{
+    "clientId": "",
+    "guildId": "",
+    "token": "",
+    "rolePerm" : "",
+    "DirectusLogin" : "",
+    "DirectusPassWord" : "",
+    "DirectusLink": ""
+}

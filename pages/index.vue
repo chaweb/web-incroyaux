@@ -2,25 +2,31 @@
 .content
     .map
 
-    .desc
+    .middle
         h2 
             span Les Incroyaux 
             |  c'est quoi ?
-        .grid
-            li 
-                span Un serveur semi-RP sur le thème medieval dans sa version 1.1
-                img(src="/spawn.jpg" width="250" height="250")
-            li#staff
-                span {{staff}} membre{{staff <= 1 ? '' : 's'}} du staff à votre écoute
-            li 
-                span Des mods et un launcher pour ne pas s'ennuyer
-            li 
-                span Des multiples évents réalisables
-            li 
-                span Facile à prendre en main
+        .desc
+            .grid
+                a 
+                    span Un serveur semi-RP sur le thème medieval dans sa version 1.1
+                    img(src="/spawn.jpg" width="250" height="250")
+                a#staff
+                    span {{staff}} membre{{staff <= 1 ? '' : 's'}} du staff à votre écoute
+                    img(:src="`/discordChat_${$colorMode.value}.jpg`" width="250" height="250") 
+                a 
+                    span(src="/spawn.jpg" width="250" height="250") Des mods et un launcher pour ne pas s'ennuyer
+                    img(:src="`/arene.jpg`" width="250" height="250") 
+                a 
+                    span(src="/spawn.jpg" width="250" height="250") Des multiples évents réalisables
+                    img(:src="`/port.jpg`" width="250" height="250") 
+                a 
+                    span(src="/spawn.jpg" width="250" height="250") Facile à prendre en main
+                    img(:src="`/house.jpg`" width="250" height="250") 
 
-    .discord
-
+        .discord
+            iframe(:src="`https://discordapp.com/widget?id=720668979928236063&theme=${$colorMode.value}`"
+                        width="350" height="500" allowtransparency="true" frameborder="0" )
     .instagram
         script(src="https://apps.elfsight.com/p/platform.js" defer)
         .elfsight-app-e5f1204f-8f44-4b77-bf6c-ea4830fb5167
@@ -35,20 +41,23 @@ function staffWait() {
     });
 }
 export default {
-    
+    computed: {
+        staff () {
+            return this.$store.state.discordData.filter(elem => elem.key == "staff")[0].value
+        }
+    },
+        
 
     mounted(){
          document.querySelector("#staff").addEventListener('mouseenter', async () => {
             for(let i = 0; i <= 44; i++){
                 await staffWait()
-                console.log(this.staff)
                 this.staff = i
             }
         })
     },
     data () {
         return {
-            staff: 44
         }
     },
   
@@ -59,13 +68,16 @@ export default {
 
 
 <style lang="sass" scoped>
-.desc
+
+.middle
     width: 100vw
     display: flex
-    flex-direction: column
-    align-items: stretch
-    padding: 0 5rem
-    font-size: 1.25rem
+    justify-content: center
+    flex-wrap: wrap
+    gap: 2rem
+    .discord
+        margin: auto
+  
     h2
         font-size: 2rem
         margin: 0 auto
@@ -74,13 +86,23 @@ export default {
                 color: $primary
             @include dark
                 color: $primary--2
+
+.desc
+    
+    width: 80vw
+    display: flex
+    flex-direction: column
+    align-items: stretch
+    padding: 0 5rem
+    font-size: 1.25rem
+        
     .grid
         padding: 3rem 0
         display: flex
         justify-content: center
         flex-wrap: wrap
         gap: 2rem
-        li
+        a
             position: relative
             list-style: none
             width: 250px
@@ -100,44 +122,40 @@ export default {
                 @include light
                     filter: brightness(1.65)
 
-            &::after
+            &::before
                 content: ''
                 display: block
                 position: absolute
                 left: 0
                 top: 0
                 width: 100%
-                height: 3px
+                height: 100%
                 z-index: -1
-                background: white
                 transition: .5s
-                filter: blur(3px)
+                filter: blur(2px)
                 opacity: 0
+                transform: scaleY(0)
+                @include dark
+                    background: black
+                @include light
+                    background: white
+                
             span
                 text-align: justify
                 width: max-content
                 margin: auto 1rem
             
-            &:hover
+            &:hover, &:active
+                @include light
+                    color: $light-text
+                @include dark
+                    color: $dark-text
+
                 transform: scale(1.2) 
                 
-                &::after
-                    animation-duration: .7s
-                    animation-name: hoverImg
+                &::before
+                    opacity: .7
+                    transform: scaleY(0.4)
 
-
-@keyframes hoverImg 
-  from 
-    opacity: 0
-    top: 0%
-  
-  75% 
-    opacity: .45
-    top: 75%
-  
-
-  to 
-    opacity: 0
-    top: 100%
 </style>
 

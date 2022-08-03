@@ -1,5 +1,5 @@
 <template lang="pug">
-navbar.navbar
+.navbar
     .navbar__burger(:id="`${opened ? 'opened' : ''}`")
         button(@click="opened = !opened" )
             fa.navbar__burger__icon(icon="fa-solid fa-bars")
@@ -7,11 +7,10 @@ navbar.navbar
             nuxtLink(to="/").list__item
                 fa(icon="fa-solid fa-home")
                 | menu
-            a(href="http://www.alsacreations.com/astuce/lire/Article_HTML5_download.txt" download="luncher").list__item
+            a(href="/luncher.exe" download="incroyaux-luncher.exe").list__item
                 fa(icon="fa-solid fa-download")
                 | download
-    h1.navbar__title
-        les Incroyaux
+    h1.navbar__title les Incroyaux
     button(@click="changeColors()" ).navbar__color
         p {{$colorMode.preference === 'system' ? 'système' : ($colorMode.preference === 'dark' ? 'noir' : 'blanc') }}
         fa(:icon="$colorMode.preference === 'system' ? 'fa-desktop' : ($colorMode.preference === 'dark' ? 'fa-moon' : 'fa-sun')").fa-fw

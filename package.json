@@ -5,22 +5,29 @@
   "scripts": {
     "dev": "nuxt",
     "build": "nuxt build",
-    "start": "nuxt start",
-    "generate": "nuxt generate"
+    "start": "nuxt start --port 3000",
+    "generate": "nuxt generate",
+    "bot": "node ./server/io/index.js"
   },
   "dependencies": {
+    "@discordjs/rest": "^1.0.1",
     "@fortawesome/fontawesome-free": "^6.1.2",
     "@fortawesome/fontawesome-svg-core": "^6.1.2",
     "@fortawesome/free-brands-svg-icons": "^6.1.2",
     "@fortawesome/free-regular-svg-icons": "^6.1.2",
     "@fortawesome/free-solid-svg-icons": "^6.1.2",
     "@fortawesome/vue-fontawesome": "^2.0.8",
-    "core-js": "^3.19.3",
+    "core-js": "^2.6.5",
+    "discord.js": "^14.1.1",
+    "graphql": "^16.5.0",
+    "graphql-request": "^4.3.0",
     "nuxt": "^2.15.8",
+    "nuxt-socket-io": "^2.0.3",
     "vue": "^2.6.14",
     "vue-server-renderer": "^2.6.14",
     "vue-template-compiler": "^2.6.14",
-    "webpack": "^4.46.0"
+    "webpack": "^4.46.0",
+    "winston": "^3.8.1"
   },
   "devDependencies": {
     "@nuxtjs/color-mode": "^2.1.1",

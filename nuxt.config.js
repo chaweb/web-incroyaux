@@ -8,7 +8,7 @@ export default {
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-      { hid: 'description', name: 'description', content: '' },
+      { hid: 'description', name: 'description', content: 'Les incroayaux, une serveur minecraft rp, medieval' },
       { name: 'format-detection', content: 'telephone=no' }
     ],
     link: [
@@ -20,8 +20,8 @@ export default {
   css: [
     "~assets/reset.scss",
     "~assets/variable/__Amain.sass",
+    "assets/style/__Amain.sass",
     "@fortawesome/fontawesome-svg-core/styles.css",
-    "assets/style/__Amain.sass"
   ],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
@@ -31,7 +31,6 @@ export default {
 
   // Auto import components: https://go.nuxtjs.dev/config-components
   components: [{ path: '~/components/layout/', prefix: 'layout' },
-    { path: '~/components/parts/', prefix: 'I-' }
   ],
 
   // Modules for dev and build (recommended): https://go.nuxtjs.dev/config-modules
@@ -42,7 +41,18 @@ export default {
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: [
     '@nuxtjs/style-resources',
+    ['nuxt-socket-io', {
+      sockets: [ // Required
+      { // At least one entry is required
+        name: 'home',
+        default: true,
+        vuex:{actions: ["dataDisord","sendData"]} ,
+        namespaces: { /* see section below */ }
+      }, 
+    ]
+    }]
   ],
+
   styleResources: {
     sass: ['~/assets/variable/__Amain.sass'],
     hoistUseStatements: true
