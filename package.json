@@ -6,7 +6,6 @@
     "dev": "nuxt",
     "build": "nuxt build",
     "start": "nuxt start --port 3000",
-    "generate": "nuxt generate",
     "bot": "node ./server/io/index.js"
   },
   "dependencies": {

@@ -10,6 +10,9 @@
             a(href="/luncher.exe" download="incroyaux-luncher.exe").list__item
                 fa(icon="fa-solid fa-download")
                 | download
+            nuxtLink(to="/map").list__item
+                fa(icon="fa-solid fa-map")
+                | map
     h1.navbar__title les Incroyaux
     button(@click="changeColors()" ).navbar__color
         p {{$colorMode.preference === 'system' ? 'système' : ($colorMode.preference === 'dark' ? 'noir' : 'blanc') }}
@@ -58,7 +61,8 @@ export default {
     @include dark
         background-color: lighten($dark-bg, 20%)
     &__title 
-        margin: 0 2rem
+        margin: auto 2rem
+        
     &__color
         display: flex
         flex-direction: row
@@ -73,9 +77,12 @@ export default {
             &:hover
                 transform: scale(1.1)
                 svg
-                    filter: drop-shadow(0 0 1rem #fff)
+                    filter: drop-shadow(0 0 1rem #fff) 
+
+            @media screen and (min-width: 900px)
+                display: none
         .list
-            position: absolute
+            position: block
             top: 100%
             left: 0
             z-index:0 
@@ -104,6 +111,21 @@ export default {
                     @include dark
                         color: $dark-text
                         background-color: lighten($dark-bg, 25%)
+            @media screen and (min-width: 900px)
+                transform: none
+                position: relative
+                height: max-content
+                top: 0
+                left: 0
+                flex-direction: row
+                margin: auto 0
+                opacity: 1
+                &__item
+                    padding: .5rem 1rem
+                    margin: 0 .5rem
+                    height: max-content
+                
+
         & button:focus-visible +, &#opened
             .list
                 opacity: 1

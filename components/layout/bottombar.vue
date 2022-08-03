@@ -8,6 +8,11 @@
     .btmbar__col
         h2.btmbar__title telechargement
         a(href="/luncher.exe" download="incroyaux-luncher.exe").btmbar__elem minecraft launcher
+            .subtitle (white list par discord)
+    
+    .btmbar__col
+        h2.btmbar__title droit ©
+        p tout droit sont réserver à Alexandre Louër
 </template>
 
 <style lang="sass" scoped>

@@ -7,7 +7,7 @@
 
 <style lang="sass" scoped>
 .page
-    padding: 4rem 0
+    padding: 10rem 0
     min-height: 90vh 
 </style>
 
