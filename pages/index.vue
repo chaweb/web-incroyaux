@@ -43,7 +43,8 @@ function staffWait() {
 export default {
     computed: {
         staff () {
-            return this.$store.state.discordData.filter(elem => elem.key == "staff")[0].value
+            let staff = this.$store.state.discordData.filter(elem => elem.key == "staff")[0].value
+            return staff == 0 ? "15" : staff
         }
     },
         
