@@ -1,3 +1,5 @@
+console.log("socket lancé !")
+
 //discord js
 const { SlashCommandBuilder, Routes} = require('discord.js');
 const { Client, GatewayIntentBits} = require('discord.js');
