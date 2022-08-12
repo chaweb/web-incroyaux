@@ -1,9 +1,10 @@
 <template lang="pug">
 .map
-    | site indisponible, pour le moment !
+    iframe(src="http://node.miridiagame.fr:37019" width="80%" height="100%")
 </template>
 <style lang="sass" scoped>
 .map 
-    height: 100%
-    width: 100%
+    height: 100vh
+    width: 100vw
+    @include flex
 </style>

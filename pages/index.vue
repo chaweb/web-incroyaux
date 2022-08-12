@@ -1,6 +1,7 @@
 <template lang="pug">
 .content
     .map
+        iframe(src="http://node.miridiagame.fr:37019" width="100%" height="100%" scrolling="no")
 
     .middle
         h2 
@@ -13,7 +14,6 @@
                     img(src="/spawn.jpg" width="250" height="250")
                 a#staff
                     span {{staff}} membre{{staff <= 1 ? '' : 's'}} du staff à votre écoute
-                    img(:src="`/discordChat_${$colorMode.value}.jpg`" width="250" height="250") 
                 a 
                     span(src="/spawn.jpg" width="250" height="250") Des mods et un launcher pour ne pas s'ennuyer
                     img(:src="`/arene.jpg`" width="250" height="250") 
@@ -68,6 +68,16 @@ export default {
 
 
 <style lang="sass" scoped>
+.map 
+    height:30vh
+    width: 100vw
+    @include flex
+
+    margin-top: -3.25rem
+    margin-bottom: 2rem
+
+    iframe
+        overflow: hidden
 
 .middle
     width: 100vw
@@ -156,6 +166,15 @@ export default {
                 &::before
                     opacity: .7
                     transform: scaleY(0.4)
-
+            &#staff
+                background-image: url("/discordChat_light.jpg")
+                background-position: top
+                background-repeat: no-repeat
+                background-size: cover
+                @include dark
+                    background-image: url("/discordChat_dark.jpg")
+                &:hover
+                    background-position: bottom
+                    
 </style>
 

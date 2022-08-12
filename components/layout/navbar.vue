@@ -7,12 +7,12 @@
             nuxtLink(to="/").list__item
                 fa(icon="fa-solid fa-home")
                 | menu
-            a(href="/luncher.exe" download="incroyaux-luncher.exe").list__item
-                fa(icon="fa-solid fa-download")
-                | download
             nuxtLink(to="/map").list__item
                 fa(icon="fa-solid fa-map")
                 | map
+            a(href="/luncher.exe" download="incroyaux-luncher.exe").list__item
+                fa(icon="fa-solid fa-download")
+                | download
     h1.navbar__title les Incroyaux
     button(@click="changeColors()" ).navbar__color
         p {{$colorMode.preference === 'system' ? 'système' : ($colorMode.preference === 'dark' ? 'noir' : 'blanc') }}
