@@ -1,6 +1,23 @@
 const express = require('express');
 const { Nuxt, Builder } = require('nuxt');
 
+const { createLogger, format, transports } = require('winston');
+const { combine, timestamp, label, prettyPrint } = format
+
+const logger = createLogger({
+  level: 'info',
+  exitOnError: false,
+  format: combine(
+      timestamp(),
+      prettyPrint()
+  ),
+  transports: [
+    new transports.File({ filename: `./logs/log.log` }),
+  ],
+});
+
+logger.info("all ready")
+
 const config = require('./nuxt.config.js');
 
 // Create new express app
@@ -20,6 +37,6 @@ app.use(nuxt.render);
 
 // Build on start
 new Builder(nuxt).build().catch(err => {
-  console.error(err);
+  logger.error(err);
   process.exit(1);
 });
