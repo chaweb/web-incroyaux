@@ -43,14 +43,15 @@ module.exports = {
     '@nuxtjs/style-resources',
     ['nuxt-socket-io', {
       sockets: [ // Required
-      { // At least one entry is required
-        name: 'home',
-        default: true,
-        vuex:{actions: ["dataDisord","sendData"]} ,
-        namespaces: { /* see section below */ }
-      }, 
-    ]
-    }]
+        { // At least one entry is required
+          name: 'home',
+          default: true,
+          vuex:{actions: ["dataDisord","sendData"]} ,
+          namespaces: { /* see section below */ }
+        }, 
+      ]
+    }],
+    '@nuxtjs/proxy'
   ],
 
   styleResources: {

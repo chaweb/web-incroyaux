@@ -1,6 +1,6 @@
 <template lang="pug">
 .map
-    iframe(src="http://node.miridiagame.fr:37019" width="80%" height="100%")
+    iframe(src="https://dynmap.rplesincroyaux.fr/" width="80%" height="100%")
 </template>
 <style lang="sass" scoped>
 .map 

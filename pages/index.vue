@@ -1,7 +1,7 @@
 <template lang="pug">
 .content
     .map
-        iframe(src="http://node.miridiagame.fr:37019" width="100%" height="100%" scrolling="no")
+        iframe(src="https://dynmap.rplesincroyaux.fr/" width="100%" height="100%" scrolling="no")
 
     .middle
         h2 
