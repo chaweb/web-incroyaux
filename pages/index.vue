@@ -10,7 +10,7 @@
         .desc
             .grid
                 a 
-                    span Un serveur semi-RP sur le thème medieval dans sa version 1.1
+                    span Un serveur semi-RP sur le thème medieval fantastique dans sa version 1.1
                     img(src="/spawn.jpg" width="250" height="250")
                 a#staff
                     span {{staff}} membre{{staff <= 1 ? '' : 's'}} du staff à votre écoute
