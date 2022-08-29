@@ -28,8 +28,7 @@
             iframe(:src="`https://discordapp.com/widget?id=720668979928236063&theme=${$colorMode.value}`"
                         width="350" height="500" allowtransparency="true" frameborder="0" )
     .instagram
-        script(src="https://apps.elfsight.com/p/platform.js" defer)
-        .elfsight-app-e5f1204f-8f44-4b77-bf6c-ea4830fb5167
+        <div class="powr-instagram-feed" id="3040e9e2_1661789263"></div><script src="https://www.powr.io/powr.js?platform=html%22%3E"></script>
 </template>
 
 <script>
