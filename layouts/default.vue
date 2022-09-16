@@ -12,22 +12,47 @@
 </style>
 
 <script>
+
+import {request, gql} from 'graphql-request';
+
+import { DirectusLogin, DirectusPassWord, DirectusLink } from '../server/io/client.json';
+
 export default {
+    methods: {
+        directusToken : async() => {
+            const data = await request(`${DirectusLink}/system`, gql`
+                mutation {
+                    auth_login(email: "${DirectusLogin}", password: "${DirectusPassWord}") {
+                        access_token
+                        refresh_token
+                    }
+                }
+            `).then(function(r) {return r})
+
+            return await (data.auth_login)
+        },
+
+
+        GraphQLPost : async(quest) =>{
+            const data = await this.directusToken().then(r => {
+                return request(`${DirectusLink}?access_token=${r.access_token}`, quest).then((r) => {return r})
+            })
+            return data
+        }
+    },
     data () {
         return {
             discordData: {}
         }
     },
     async mounted() {
-        this.socket = this.$nuxtSocket({
-            // nuxt-socket-io opts: 
-            name: 'home', // Use socket "home"
-            channel: '/index', // connect to '/index'
-
-            // socket.io-client opts:
-            reconnection: false
-        })
-        this.discordData = (await this.socket.emitP('dataDisord')).incroyaux
+        this.discordData = (await this.GraphQLPost(gql`
+        query {
+            incroyaux{
+                    key
+                    value
+            }
+        }`))
         console.log(this.discordData)
         this.$store.commit('discordDataChange', this.discordData)
         console.log(this.$store.discordData)

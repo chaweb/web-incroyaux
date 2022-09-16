@@ -1,7 +1,7 @@
 console.log("socket lancé !")
 
 //discord js
-const { SlashCommandBuilder, Routes} = require('discord.js');
+const { Routes } = require('discord.js');
 const { Client, GatewayIntentBits} = require('discord.js');
 
 //discord rest
@@ -17,8 +17,7 @@ const { combine, timestamp, label, prettyPrint } = format
 
 
 //for graphql (directus)
-const {request, gql, resolveRequestDocument} = require ('graphql-request');
-const { onRenderTriggered } = require('vue');
+const {request, gql} = require ('graphql-request');
 
 
 directusToken = async() => {
@@ -108,24 +107,9 @@ client.on('ready', async() => {
     
 client.login(token);
 
+const app = require('express')();
+
 module.exports = {
     logger: logger,
-    default : function Svc(socket, io) {
-        return Object.freeze({
-            async dataDisord(){ 
-                logger.info("data demander")
-                let data = await GraphQLPost(gql`
-                query {
-                    incroyaux{
-                            key
-                            value
-                    }
-                }
-                `).then(r => {return r}).catch(r => logger.error(r))
-                return data
-            },
-            
-        })
-    }
 };
 

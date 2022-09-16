@@ -32,6 +32,8 @@
 </template>
 
 <script>
+
+
 function staffWait() {
     return new Promise(resolve => {
         setTimeout(() => {
@@ -78,6 +80,7 @@ export default {
 
     iframe
         overflow: hidden
+        border: none
 
 .middle
     width: 100vw

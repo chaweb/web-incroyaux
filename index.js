@@ -19,6 +19,8 @@ const logger = createLogger({
 logger.info("all ready")
 
 const config = require('./nuxt.config.js');
+const server = require('./server/io/index.js')
+
 
 // Create new express app
 const app = express();

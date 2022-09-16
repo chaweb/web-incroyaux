@@ -41,16 +41,6 @@ module.exports = {
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: [
     '@nuxtjs/style-resources',
-    ['nuxt-socket-io', {
-      sockets: [ // Required
-        { // At least one entry is required
-          name: 'home',
-          default: true,
-          vuex:{actions: ["dataDisord","sendData"]} ,
-          namespaces: { /* see section below */ }
-        }, 
-      ]
-    }],
     '@nuxtjs/proxy'
   ],
 
