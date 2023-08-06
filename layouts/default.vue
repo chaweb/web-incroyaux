@@ -13,29 +13,24 @@
 
 <script>
 
-import {request, gql} from 'graphql-request';
-
-import { DirectusLogin, DirectusPassWord, DirectusLink } from '../server/io/client.json';
+import { DirectusLogin, DirectusPassWord } from '../server/io/client.json';
 
 export default {
     methods: {
-        directusToken : async() => {
-            const data = await request(`${DirectusLink}/system`, gql`
-                mutation {
-                    auth_login(email: "${DirectusLogin}", password: "${DirectusPassWord}") {
-                        access_token
-                        refresh_token
-                    }
-                }
-            `).then(function(r) {return r})
+        async directusToken () {
+            const data = await this.$axios.$post(`/api/auth/login`,
+            {
+                "email": "${DirectusLogin}",
+                "password": "${DirectusPassWord}"
+            })
 
             return await (data.auth_login)
         },
 
 
-        GraphQLPost : async(quest) =>{
+        async GraphQLPost(quest) {
             const data = await this.directusToken().then(r => {
-                return request(`${DirectusLink}?access_token=${r.access_token}`, quest).then((r) => {return r})
+                return this.$axios.$post(`/api/?access_token=${r.access_token}`, quest)
             })
             return data
         }
@@ -46,13 +41,13 @@ export default {
         }
     },
     async mounted() {
-        this.discordData = (await this.GraphQLPost(gql`
+        this.discordData = await this.GraphQLPost(`
         query {
             incroyaux{
                     key
                     value
             }
-        }`))
+        }`)
         console.log(this.discordData)
         this.$store.commit('discordDataChange', this.discordData)
         console.log(this.$store.discordData)

@@ -1,3 +1,5 @@
+import {DirectusLinkWithoutGraph} from "./server/io/client.json"
+
 module.exports = {
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
@@ -26,7 +28,7 @@ module.exports = {
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [
-    '~/plugins/fontawesome.js'
+    '~/plugins/fontawesome.js',
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
@@ -36,12 +38,16 @@ module.exports = {
   // Modules for dev and build (recommended): https://go.nuxtjs.dev/config-modules
   buildModules: [
     ['@nuxtjs/color-mode', {classSuffix: ''}],
+    ['@nuxtjs/axios', {proxy: true }]
   ],
+  proxy: {
+    '/api/': DirectusLinkWithoutGraph,
+  },
 
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: [
     '@nuxtjs/style-resources',
-    '@nuxtjs/proxy'
+    '@nuxtjs/proxy',
   ],
 
   styleResources: {
